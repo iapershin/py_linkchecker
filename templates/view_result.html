@@ -1,0 +1,20 @@
+
+{% block main %}
+
+
+<table border="1">
+    <tr>
+        <th>Short link</th>
+        <th>Status</th>
+        <th>Original URL</th>
+    </tr>
+{% for row in result %}
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+    </tr>
+{% endfor %}
+
+
+{% endblock %}
