@@ -1,7 +1,6 @@
 
 {% block main %}
-
-
+<a href='/'><button>Go back</button></a>
 <table border="1">
     <tr>
         <th>Short link</th>
@@ -11,10 +10,19 @@
 {% for row in result %}
     <tr>
         <td>{{row[0]}}</td>
-        <td>{{row[1]}}</td>
+        {% if row[1] == 200 %}
+            <td><font color="green">{{row[1]}}</font></td>
+        {% else %}
+            <td><font color="red">{{row[1]}}</font></td>
+        {% endif %}
         <td>{{row[2]}}</td>
     </tr>
+  
 {% endfor %}
-
-
 {% endblock %}
+</table> 
+<br>
+<footer><b><center>Completed!</b><br>
+Made by Yaroslav Pershin || yarpost@outlook.com
+</center>
+</footer>
