@@ -1,10 +1,8 @@
-from flask import Flask, render_template, flash, request
-from wtforms import Form, TextField, TextAreaField, validators, StringField, SubmitField
+from flask import Flask, render_template, request
 import requests
-import re
 import sys
 
-DEBUG = True
+DEBUG = False
 app = Flask(__name__)
 app.config.from_object(__name__)
 
@@ -27,11 +25,12 @@ def render_result():
             'User-Agent': '{}'.format(user_agent)
             }
         try:
-            response = requests.get(url,allow_redirects=True,headers=headers)
+            response = requests.head(url,allow_redirects=True,headers=headers)
             result_array.append([url,response.status_code,response.url])
         except requests.exceptions.ConnectionError:
             result_array.append([url,"503","Connetion error. Host is not available"])
     return render_template('view_result.html', result=result_array)
 
 if __name__ == "__main__":
-    app.run(host=sys.argv[1], port=int(sys.argv[2]), debug=sys.argv[3])
+    from waitress import serve
+    serve(app, host=sys.argv[1], port=int(sys.argv[2]))
