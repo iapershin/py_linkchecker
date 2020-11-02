@@ -39,4 +39,4 @@ def render_result():
     return render_template('view_result.html', result=result_array)
 
 if __name__ == "__main__":
-    app.run(host=sys.argv[1], port=int(sys.argv[2]))
+    app.run()
