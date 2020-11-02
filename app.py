@@ -21,21 +21,16 @@ def render_result():
     for i in request.form['url_list'].splitlines():
       urls.append(i.rstrip())
     for url in urls:
-        if url == '':
-            pass
-        else:
-          headers = {
-              'User-Agent': '{}'.format(user_agent)
-              }
-          try:
-              response = requests.get(url,allow_redirects=True,headers=headers)
-              result_array.append([url,response.status_code,response.url])
-          except requests.exceptions.ConnectionError:
-              result_array.append([url,"503","Connection error. Host is not available"])
-          except requests.exceptions.MissingSchema:
-              result_array.append([url,"503","Invalid url"])
-          except requests.exceptions.ConnectTimeout:
-              result_array.append([url,"408","Request timeout"])
+        headers = {
+            'User-Agent': '{}'.format(user_agent)
+            }
+        try:
+            response = requests.get(url,allow_redirects=True,headers=headers)
+            result_array.append([url,response.status_code,response.url])
+        except requests.exceptions.ConnectionError:
+            result_array.append([url,"503","Connection error. Host is not available"])
+        except requests.exceptions.MissingSchema:
+            result_array.append([url,"503","Invalid url"])
     return render_template('view_result.html', result=result_array)
 
 if __name__ == "__main__":
