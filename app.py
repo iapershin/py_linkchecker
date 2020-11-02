@@ -10,7 +10,7 @@ app.config.from_object(__name__)
 def index():
     return render_template('templates/form.html')
 
-@app.route("templates/view_result.html", methods=['GET', 'POST'])
+@app.route("/get_result", methods=['GET', 'POST'])
 def render_result():
     urls = []
     result_array = []
