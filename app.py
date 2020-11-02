@@ -25,7 +25,7 @@ def render_result():
             'User-Agent': '{}'.format(user_agent)
             }
         try:
-            response = requests.get(url,allow_redirects=True,headers=headers)
+            response = requests.get(url,allow_redirects=True)
             result_array.append([url,response.status_code,response.url])
         except requests.exceptions.ConnectionError:
             result_array.append([url,"503","Connection error. Host is not available"])
@@ -34,4 +34,4 @@ def render_result():
     return render_template('view_result.html', result=result_array)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0")
