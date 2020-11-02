@@ -19,9 +19,9 @@ def render_result():
     #else:
     #    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36"
     #user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36"
-    headers = {
-            'User-Agent': '{}'.format(user_agent)
-        }
+    #headers = {
+    #        'User-Agent': '{}'.format(user_agent)
+    #    }
     for i in request.form['url_list'].splitlines():
       urls.append(i)
     for url in urls:
