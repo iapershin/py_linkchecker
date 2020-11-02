@@ -18,7 +18,7 @@ def render_result():
     #    user_agent = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1"
     #else:
     #    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36"
-    user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36"
+    #user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.102 Safari/537.36"
     headers = {
             'User-Agent': '{}'.format(user_agent)
         }
@@ -26,7 +26,7 @@ def render_result():
       urls.append(i)
     for url in urls:
         try:
-            response = requests.get(url,allow_redirects=True,headers=headers)
+            response = requests.get(url,allow_redirects=True)
             result_array.append([url,response.status_code,response.url])
         except requests.exceptions.ConnectionError:
             result_array.append([url,"503","Connection error. Host is not available"])
