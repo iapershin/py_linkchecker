@@ -8,7 +8,7 @@ app.config.from_object(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('templates/form.html')
+    return render_template('form.html')
 
 @app.route("/get_result", methods=['GET', 'POST'])
 def render_result():
@@ -36,7 +36,7 @@ def render_result():
               result_array.append([url,"503","Invalid url"])
           except requests.exceptions.ConnectTimeout:
               result_array.append([url,"408","Request timeout"])
-    return render_template('templates/view_result.html', result=result_array)
+    return render_template('view_result.html', result=result_array)
 
 if __name__ == "__main__":
     app.run()
