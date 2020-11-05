@@ -7,18 +7,18 @@
         <th>Status</th>
         <th>Original URL</th>
     </tr>
-{% for row in result %}
+{% for url in request.form['url_list'].splitlines() %}
+    {% set short_url, status, original_url = make_request(url.rstrip(),user_agent) %}
     <tr>
-        <td>{{row[0]}}</td>
-        {% if row[1] == 200 %}
-            <td><font color="green">{{row[1]}}</font></td>
+        <td>{{ short_url }}</td>
+        {% if status == 200 %}
+            <td><font color="green">{{ status }}</font></td>
         {% else %}
-            <td><font color="red">{{row[1]}}</font></td>
+            <td><font color="red">{{ status }}</font></td>
         {% endif %}
-        <td>{{row[2]}}</td>
+        <td>{{ original_url }}</td>
     </tr>
-  
-{% endfor %}
+    {% endfor %}
 {% endblock %}
 </table> 
 <br>
