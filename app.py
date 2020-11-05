@@ -40,4 +40,5 @@ def make_request(url,user_agent):
 app.jinja_env.globals.update(make_request=make_request)
 
 if __name__ == "__main__":
-    app.run(host=sys.argv[1], port=int(sys.argv[2]))
+    #app.run(host=sys.argv[1], port=int(sys.argv[2]))
+    app.run()
