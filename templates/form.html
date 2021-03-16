@@ -1,10 +1,4 @@
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script type="text/javascript">// <![CDATA[
-        function loading(){
-            $("#loading").show();
-            $("#content").hide();
-            }// ]]></script>
 <head>
     <title>PyLinkChecker</title>
     <style>
@@ -13,14 +7,6 @@
     height: 200px;
     resize: none;
    }
-
-    div#loading {
-    width: 35px;
-    height: 35px;
-    display: none;
-    background: url (templates/ajax-loader.gif) no-repeat;
-    cursor: wait;
-    }
     </style>
 </head>
 <body>
@@ -32,7 +18,7 @@
     <input type="radio" name="agent_option" value ="off" checked hidden=true>
     <div id="loading"></div>
     <div id="content">
-    <input type="submit" value="SUBMIT" style="background-color:#f14e4e; cursor: pointer; font-size:20px;" onclick="loading();"/>
+    <input type="submit" value="SUBMIT" style="background-color:#f14e4e; cursor: pointer; font-size:20px; />
         </div>
 </form>
 </body>
