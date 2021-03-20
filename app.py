@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request
 import requests
-import sys
 
-DEBUG = False
 app = Flask(__name__)
 app.config.from_object(__name__)
 
@@ -29,15 +27,18 @@ def make_request(url,user_agent):
             'upgrade-insecure-Requests': '1'
         }
         try:
-            response = requests.get(url,allow_redirects=True,headers=headers)
+            response = requests.get(url,allow_redirects=True,headers=headers,timeout=3)
             return url,response.status_code,response.url
         except requests.exceptions.ConnectionError:
             return url,"503","Connection error. Host is not available"
         except requests.exceptions.MissingSchema:
             return url,"503","Invalid url"
+        except requests.exceptions.Timeout:
+            return url,"408","Request timeout"
         except requests.exceptions.ConnectTimeout:
             return url,"408","Request timeout"
+
 app.jinja_env.globals.update(make_request=make_request)
 
 if __name__ == "__main__":
-    app.run(host=sys.argv[1], port=int(sys.argv[2]))
+    app.run()
