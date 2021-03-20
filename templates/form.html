@@ -7,19 +7,37 @@
     height: 200px;
     resize: none;
    }
+   div#loading {
+    width: 35px;
+    height: 35px;
+    display: none;
+    background: url("templates/ajax-loader.gif") no-repeat;
+    cursor: wait;
+    }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">// <![CDATA[
+    function loading(){
+    $("#loading").show();
+    $("#content").hide();       }// ]]>
+</script>
 </head>
 <body>
 <form method="POST" action="/get_result">
+    <div id="content">
     <h1>Put links here</h1>
     <textarea name="url_list"></textarea>
     <br>
     <input type="radio" name="agent_option" value ="on">Run as mobile client<Br>
     <input type="radio" name="agent_option" value ="off" checked hidden=true>
-    <div id="loading"></div>
-    <div id="content">
-    <input type="submit" />
+
+    <input type="submit" onclick="loading();"/>
+    </div>
+
+        <div id="loading">
+            <p align="center">Loading...</p>
         </div>
+
 </form>
 </body>
 </html>
